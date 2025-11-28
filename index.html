@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouStream Pro - استمتع بـ يوتيوب بريميوم</title>
+    <title>YouTube Premium - اختر باقتك الآن</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
     <style>
         body { font-family: 'Tajawal', sans-serif; }
         .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1596728146626-0a1e7c12b785?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
         }
@@ -23,17 +23,18 @@
     <header class="hero-bg min-h-screen flex items-center justify-center text-center">
         <div class="container mx-auto px-6">
             <div class="mb-6">
-                <span class="bg-red-700 text-yellow-400 text-sm font-bold px-4 py-2 rounded-full">العرض الحصري</span>
+                <span class="bg-red-700 text-yellow-400 text-sm font-bold px-4 py-2 rounded-full">العروض الحصرية</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-black mb-6">
                 ودّع المقاطعات المزعجة<br>
                 <span class="text-yellow-400">استمتع بـ يوتيوب كما يجب</span>
             </h1>
             <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-gray-200">
-                احصل على تجربة مشاهدة لا مثيل لها: بدون إعلانات، مع التشغيل في الخلفية، وإمكانية التحميل لمشاهدتها في أي وقت. كل هذا وأكثر مع YouStream Pro.
+                اختر الباقة التي تناسبك واستمتع بمشاهدة بدون إعلانات، مع التشغيل في الخلفية، وإمكانية التحميل.
             </p>
-            <button onclick="openModal()" class="bg-yellow-400 text-gray-900 font-black py-4 px-10 rounded-full text-xl hover:bg-yellow-300 transform hover:scale-105 transition-all duration-300 shadow-2xl">
-                اشترِ الآن واستمتع
+            <!-- تم تعديل الزر هنا ليستدعي دالة الجافاسكريبت -->
+            <button onclick="scrollToPricing()" class="bg-yellow-400 text-gray-900 font-black py-4 px-10 rounded-full text-xl hover:bg-yellow-300 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+                اطلب باقتك الآن
             </button>
             <p class="mt-4 text-gray-400">دفع آمن عبر باي بال</p>
         </div>
@@ -42,7 +43,7 @@
     <!-- Features Section -->
     <section class="py-20 bg-gray-800">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-yellow-400 mb-4">لماذا تختار YouStream Pro؟</h2>
+            <h2 class="text-4xl font-bold text-center text-yellow-400 mb-4">لماذا تختار YouTube Premium؟</h2>
             <p class="text-center text-gray-400 mb-12 text-lg">ميزات حصرية ستغير طريقة مشاهدتك للأبد.</p>
             
             <div class="grid md:grid-cols-3 gap-10">
@@ -81,20 +82,59 @@
         </div>
     </section>
 
-    <!-- Final CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-red-800 to-red-900 text-center">
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-900">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-black mb-6">هل أنت مستعد للارتقاء بتجربتك؟</h2>
-            <p class="text-xl mb-8 text-gray-200">انضم إلى آلاف المستخدمين الذين استمتعوا بـ يوتيوب بدون حدود.</p>
-            <button onclick="openModal()" class="bg-yellow-400 text-gray-900 font-black py-4 px-10 rounded-full text-xl hover:bg-yellow-300 transform hover:scale-105 transition-all duration-300 shadow-2xl">
-                اطلب اشتراكك الآن
-            </button>
+            <h2 class="text-4xl font-bold text-center text-white mb-4">اختر الباقة الأنسب لك</h2>
+            <p class="text-center text-gray-400 mb-12 text-lg">أسعار تناسب الجميع مع ضمان أفضل تجربة مشاهدة.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Monthly Plan -->
+                <div class="bg-gray-800 p-8 rounded-lg text-center transform hover:scale-105 transition duration-300">
+                    <h3 class="text-2xl font-bold mb-4">باقة شهرية</h3>
+                    <p class="text-gray-400 mb-6">مثالية للتجربة</p>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold text-yellow-400">$10</span>
+                        <span class="text-gray-400">/ شهر</span>
+                    </div>
+                    <button onclick="selectPlan('شهري', 10)" class="w-full bg-red-700 text-white font-bold py-3 rounded-lg hover:bg-red-600 transition duration-300">
+                        اختر الباقة
+                    </button>
+                </div>
+
+                <!-- 6 Months Plan -->
+                <div class="bg-gray-800 p-8 rounded-lg text-center transform hover:scale-105 transition duration-300 border-2 border-yellow-400">
+                    <h3 class="text-2xl font-bold mb-4">باقة 6 شهور</h3>
+                    <p class="text-gray-400 mb-6">وفر مع كل شهر</p>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold text-yellow-400">$60</span>
+                        <span class="text-gray-400">/ 6 شهور</span>
+                    </div>
+                    <button onclick="selectPlan('6 شهور', 60)" class="w-full bg-yellow-400 text-gray-900 font-bold py-3 rounded-lg hover:bg-yellow-300 transition duration-300">
+                        اختر الباقة
+                    </button>
+                </div>
+
+                <!-- Yearly Plan -->
+                <div class="bg-gray-800 p-8 rounded-lg text-center transform hover:scale-105 transition duration-300 relative">
+                    <span class="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">الأكثر مبيعاً</span>
+                    <h3 class="text-2xl font-bold mb-4">باقة سنوية</h3>
+                    <p class="text-gray-400 mb-6">أفضل قيمة على الإطلاق</p>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold text-yellow-400">$80</span>
+                        <span class="text-gray-400">/ سنة</span>
+                    </div>
+                    <button onclick="selectPlan('سنوي', 80)" class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-500 transition duration-300">
+                        اختر الباقة
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-gray-950 text-gray-400 text-center py-8">
-        <p>&copy; 2024 YouStream Pro. جميع الحقوق محفوظة.</p>
+        <p>&copy; 2024 YouTube Premium. جميع الحقوق محفوظة.</p>
         <p class="mt-2 text-sm">هذه الخدمة هي واجهة لبيع اشتراك يوتيوب بريميوم.</p>
     </footer>
 
@@ -102,10 +142,12 @@
     <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
         <div class="bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4 relative">
             <button onclick="closeModal()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-2xl">&times;</button>
-            <h3 class="text-2xl font-bold mb-6 text-yellow-400">أكمل طلبك</h3>
+            <h3 id="modalTitle" class="text-2xl font-bold mb-6 text-yellow-400">أكمل طلبك</h3>
             <p class="mb-4 text-gray-300">املأ بياناتك ثم اضغط على زر إرسال الطلب.</p>
             
             <form id="orderForm" onsubmit="handleSubmit(event)">
+                <input type="hidden" name="plan" id="selectedPlan">
+                
                 <div class="mb-4">
                     <label for="name" class="block text-gray-300 mb-2">الاسم الكامل</label>
                     <input type="text" id="name" name="name" required class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-yellow-400 text-white">
@@ -131,7 +173,19 @@
         const form = document.getElementById('orderForm');
         const submitButton = document.getElementById('submitButton');
         const submitMessage = document.getElementById('submitMessage');
-        const paypalUrl = 'https://www.paypal.com/ncp/payment/9YZZWS9W5ZB9J';
+        const modalTitle = document.getElementById('modalTitle');
+        const selectedPlanInput = document.getElementById('selectedPlan');
+
+        // === تم تحديث روابط باي بال بالروابط التي أرسلتها ===
+        const paypalUrl_monthly = 'https://www.paypal.com/ncp/payment/9YZZWS9W5ZB9J';
+        const paypalUrl_6months = 'https://www.paypal.com/ncp/payment/K84SAATC7FBR6';
+        const paypalUrl_yearly = 'https://www.paypal.com/ncp/payment/9VYYJQJXZKVFJ';
+        // =======================================================
+
+        // دالة جديدة للانتقال السلس لقسم الباقات
+        function scrollToPricing() {
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
 
         function openModal() {
             modal.style.display = 'flex';
@@ -141,12 +195,17 @@
             modal.style.display = 'none';
         }
 
+        function selectPlan(planName, price) {
+            selectedPlanInput.value = `${planName} - ${price} دولار`;
+            modalTitle.innerText = `أكمل طلبك - باقة ${planName}`;
+            openModal();
+        }
+
         async function handleSubmit(event) {
             event.preventDefault();
 
             const formData = new FormData(form);
             
-            // تحديث واجهة المستخدم
             submitButton.disabled = true;
             submitButton.innerText = '...جاري الإرسال';
             submitMessage.classList.add('hidden');
@@ -159,7 +218,6 @@
                 });
 
                 if (response.ok) {
-                    // نجح الإرسال: عرض رسالة النجاح وزر الدفع الجديد
                     submitMessage.innerHTML = `
                         <p class="text-green-400 font-bold text-lg">✅ تم استلام طلبك بنجاح!</p>
                         <p class="text-gray-300 mt-2">الآن، اضغط على الزر أدناه لإتمام عملية الدفع الآمنة.</p>
@@ -168,15 +226,22 @@
                     submitMessage.classList.remove('hidden');
                     submitMessage.classList.add('bg-gray-700', 'border', 'border-green-400');
 
-                    // إخفاء زر الإرسال الأصلي
                     submitButton.style.display = 'none';
 
-                    // إنشاء وإظهار زر الانتقال للدفع
+                    let paymentUrl = '';
+                    if (selectedPlanInput.value.includes('شهري')) {
+                        paymentUrl = paypalUrl_monthly;
+                    } else if (selectedPlanInput.value.includes('6 شهور')) {
+                        paymentUrl = paypalUrl_6months;
+                    } else if (selectedPlanInput.value.includes('سنوي')) {
+                        paymentUrl = paypalUrl_yearly;
+                    }
+
                     const paymentButton = document.createElement('button');
                     paymentButton.innerText = 'الانتقال إلى صفحة الدفع الآمن';
                     paymentButton.className = 'w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-500 transition duration-300 mt-4';
                     paymentButton.onclick = () => {
-                        window.location.href = paypalUrl;
+                        window.location.href = paymentUrl;
                     };
                     form.appendChild(paymentButton);
 
