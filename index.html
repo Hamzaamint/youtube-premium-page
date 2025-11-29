@@ -13,7 +13,6 @@
     <style>
         body { font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
         
-        /* خلفية متحركة ببطء تعطي حيوية */
         .animated-bg {
             background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #000000);
             background-size: 400% 400%;
@@ -26,7 +25,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* تحريك الشعار */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
@@ -38,7 +36,6 @@
             filter: drop-shadow(0 10px 20px rgba(220, 38, 38, 0.4));
         }
 
-        /* تأثير التوهج للبطاقات */
         .glow-card:hover {
             box-shadow: 0 0 25px rgba(220, 38, 38, 0.3);
             transform: translateY(-5px);
@@ -91,23 +88,17 @@
             
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white/5 p-8 rounded-3xl hover:bg-white/10 transition duration-300 border border-white/10 backdrop-blur-md" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 text-white rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-lg">
-                        🚫
-                    </div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 text-white rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-lg">🚫</div>
                     <h3 class="text-xl font-bold mb-3 text-white">صفر إعلانات</h3>
                     <p class="text-gray-400 leading-relaxed">انسَ زر "تخطي الإعلان". شاهد مسلسلاتك وبرامجك المفضلة متواصلة دون أي انقطاع.</p>
                 </div>
                 <div class="bg-white/5 p-8 rounded-3xl hover:bg-white/10 transition duration-300 border border-white/10 backdrop-blur-md" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-lg">
-                        🎧
-                    </div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-lg">🎧</div>
                     <h3 class="text-xl font-bold mb-3 text-white">يوتيوب ميوزك مجاناً</h3>
                     <p class="text-gray-400 leading-relaxed">اشتراكك يشمل تطبيق Music. استمع لأغانيك المفضلة والشاشة مغلقة.</p>
                 </div>
                 <div class="bg-white/5 p-8 rounded-3xl hover:bg-white/10 transition duration-300 border border-white/10 backdrop-blur-md" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 text-white rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-lg">
-                        ⬇️
-                    </div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 text-white rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-lg">⬇️</div>
                     <h3 class="text-xl font-bold mb-3 text-white">تحميل ومشاهدة أوفلاين</h3>
                     <p class="text-gray-400 leading-relaxed">المحتوى معك أينما كنت. حمل الفيديوهات وشاهدها في الطائرة أو البر.</p>
                 </div>
@@ -128,8 +119,8 @@
                         <span class="text-gray-500">/ شهر</span>
                     </div>
                     <ul class="text-gray-400 text-sm mb-8 space-y-3 text-right pr-4">
-                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> حساب خاص بك</li>
-                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> ضمان كامل المدة</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> حساب خاص بك</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> ضمان كامل المدة</li>
                     </ul>
                     <button onclick="selectPlan('شهري', 10)" class="w-full bg-gray-700 text-white font-bold py-3 rounded-xl hover:bg-gray-600 transition">
                         اختر الباقة
@@ -144,9 +135,9 @@
                         <span class="text-gray-500">/ 6 شهور</span>
                     </div>
                     <ul class="text-gray-300 text-sm mb-8 space-y-3 text-right pr-4">
-                        <li class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> حساب خاص بك</li>
-                        <li class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> يوتيوب ميوزك مجاناً</li>
-                        <li class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> ضمان كامل المدة</li>
+                        <li class="flex items-center gap-2"><span class="text-yellow-500">✓</span> حساب خاص بك</li>
+                        <li class="flex items-center gap-2"><span class="text-yellow-500">✓</span> يوتيوب ميوزك مجاناً</li>
+                        <li class="flex items-center gap-2"><span class="text-yellow-500">✓</span> ضمان كامل المدة</li>
                     </ul>
                     <button onclick="selectPlan('6 شهور', 60)" class="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-yellow-500/40 transition transform hover:-translate-y-1">
                         اختر الباقة
@@ -161,8 +152,8 @@
                         <span class="text-gray-500">/ سنة</span>
                     </div>
                     <ul class="text-gray-400 text-sm mb-8 space-y-3 text-right pr-4">
-                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> أفضل قيمة سعرية</li>
-                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> راحة بال لمدة سنة</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> أفضل قيمة سعرية</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> راحة بال لمدة سنة</li>
                     </ul>
                     <button onclick="selectPlan('سنوي', 80)" class="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-500 transition hover:shadow-red-600/40 hover:shadow-lg">
                         اختر الباقة
@@ -173,10 +164,7 @@
     </section>
 
     <footer class="bg-black/80 backdrop-blur text-gray-500 text-center py-8 border-t border-gray-800">
-        <p class="flex items-center justify-center gap-2">
-            Made with ❤️ for YouTube Lovers.
-        </p>
-        <p class="mt-2 text-xs">&copy; 2024 جميع الحقوق محفوظة.</p>
+        <p>&copy; 2024 جميع الحقوق محفوظة.</p>
     </footer>
 
     <div id="orderModal" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50 backdrop-blur-sm p-4 transition-opacity duration-300">
@@ -187,7 +175,7 @@
             <form id="orderForm" onsubmit="handleSubmit(event)">
                 <input type="hidden" name="plan" id="selectedPlan">
                 
-                <div class="space-y-4">
+                <div class="space-y-4" id="formInputs">
                     <div>
                         <label class="block text-gray-400 mb-2 text-sm font-medium">الاسم</label>
                         <input type="text" name="name" required placeholder="اسمك الكريم" class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white transition outline-none placeholder-gray-600 hover:border-gray-500">
@@ -202,7 +190,21 @@
                     </div>
                 </div>
 
-                <div id="submitMessage" class="hidden mt-4 p-4 rounded-xl text-center text-sm"></div>
+                <div id="submitMessage" class="hidden mt-4 p-6 rounded-2xl bg-gray-800 border border-green-500/30 text-center">
+                    <div class="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">تم تسجيل طلبك!</h4>
+                    <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+                        يرجى العلم أن التفعيل يستغرق من <br>
+                        <span class="text-yellow-400 font-bold bg-yellow-400/10 px-2 py-1 rounded">3 إلى 24 ساعة</span>
+                        <br>وسيتم إرسال التفاصيل إلى بريدك الإلكتروني.
+                    </p>
+                    <div class="flex items-center justify-center gap-2 text-blue-400 text-sm font-medium animate-pulse">
+                        <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                        جاري تحويلك للدفع الآمن...
+                    </div>
+                </div>
                 
                 <button id="submitButton" type="submit" class="w-full bg-red-600 text-white font-bold py-4 rounded-xl hover:bg-red-700 transition duration-300 shadow-lg mt-6 flex items-center justify-center gap-2 hover:shadow-red-600/40 hover:scale-[1.02]">
                     <span>انتقل للدفع الآمن</span>
@@ -214,17 +216,13 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // تشغيل الأنيميشن
-        AOS.init({
-            once: true, // الحركة تحدث مرة واحدة فقط عند النزول
-            duration: 800, // مدة الحركة
-            offset: 100, // المسافة قبل بدء الحركة
-        });
+        AOS.init({ once: true, duration: 800, offset: 100 });
 
         const modal = document.getElementById('orderModal');
         const form = document.getElementById('orderForm');
         const submitButton = document.getElementById('submitButton');
         const submitMessage = document.getElementById('submitMessage');
+        const formInputs = document.getElementById('formInputs'); // للإخفاء عند النجاح
         const modalTitle = document.getElementById('modalTitle');
         const selectedPlanInput = document.getElementById('selectedPlan');
 
@@ -239,6 +237,10 @@
         function openModal() {
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            // إعادة تعيين الحالة عند الفتح من جديد
+            submitMessage.classList.add('hidden');
+            formInputs.style.display = 'block';
+            submitButton.style.display = 'flex';
         }
 
         function closeModal() {
@@ -256,14 +258,9 @@
             event.preventDefault();
             const formData = new FormData(form);
             
+            // تغيير حالة الزر أثناء المعالجة
             submitButton.disabled = true;
-            submitButton.innerHTML = `
-                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <span>جاري التحويل لباي بال...</span>
-            `;
+            submitButton.innerHTML = `<svg class="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> <span>جاري المعالجة...</span>`;
             
             try {
                 const response = await fetch('https://formspree.io/f/mvgjrdgn', {
@@ -278,19 +275,24 @@
                     else if (selectedPlanInput.value.includes('6 شهور')) paymentUrl = paypalUrl_6months;
                     else if (selectedPlanInput.value.includes('سنوي')) paymentUrl = paypalUrl_yearly;
 
-                    window.location.href = paymentUrl;
+                    // إخفاء الحقول والزر وإظهار رسالة النجاح
+                    formInputs.style.display = 'none';
+                    submitButton.style.display = 'none';
+                    submitMessage.classList.remove('hidden');
+
+                    // الانتظار 4 ثواني لقراءة الرسالة ثم التحويل
+                    setTimeout(() => {
+                        window.location.href = paymentUrl;
+                    }, 4000);
+
                 } else {
                     throw new Error('Failed');
                 }
             } catch (error) {
-                submitMessage.innerText = 'حدث خطأ في الإرسال، يرجى التحقق من الاتصال والمحاولة مرة أخرى.';
-                submitMessage.classList.remove('hidden');
-                submitMessage.classList.add('bg-red-900/50', 'text-red-200', 'border', 'border-red-800');
+                // إعادة الزر لحالته الطبيعية في حال الخطأ
                 submitButton.disabled = false;
-                submitButton.innerHTML = `
-                    <span>انتقل للدفع الآمن</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                `;
+                submitButton.innerHTML = `<span>حاول مرة أخرى</span>`;
+                alert('حدث خطأ في الاتصال، يرجى المحاولة مجدداً.');
             }
         }
 
