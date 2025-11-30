@@ -56,6 +56,16 @@
             border-color: rgba(220, 38, 38, 0.8);
             box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
         }
+        
+        /* 🚨 إضافة هذا الكلاس لإخفاء حقل Honeypot 🚨 */
+        .honeypot-field {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            height: 0;
+            width: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="animated-bg text-white min-h-screen">
@@ -86,8 +96,8 @@
             
             <div class="mb-12 flex justify-center" data-aos="zoom-out-up" data-aos-delay="600">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png" 
-                     alt="YouTube Official Logo" 
-                     class="floating-img w-40 md:w-52 object-contain mx-auto">
+                    alt="YouTube Official Logo" 
+                    class="floating-img w-40 md:w-52 object-contain mx-auto">
             </div>
 
             <div class="flex flex-col md:flex-row gap-4 justify-center items-center" data-aos="fade-up" data-aos-delay="800">
@@ -218,6 +228,7 @@
             <h3 id="modalTitle" class="text-2xl font-bold mb-6 text-white border-b border-gray-800 pb-4" data-en-base="Complete Your Order" data-ar-base="أكمل طلبك">Complete Your Order</h3>
             
             <form id="orderForm" onsubmit="handleSubmit(event)">
+                <input type="text" name="_gotcha" class="honeypot-field" tabindex="-1" autocomplete="off">
                 <input type="hidden" name="plan" id="selectedPlan">
                 
                 <div class="space-y-4" id="formInputs">
@@ -253,7 +264,7 @@
                 
                 <button id="submitButton" type="submit" class="w-full bg-gradient-to-r from-red-600 to-red-800 text-white font-bold py-4 rounded-xl hover:from-red-500 hover:to-red-700 transition duration-300 shadow-lg mt-6 flex items-center justify-center gap-2 hover:shadow-red-600/30 hover:scale-[1.02] border border-red-600/20" data-en="Proceed to Secure Payment" data-ar="انتقل للدفع الآمن">
                     <span>Proceed to Secure Payment</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 0 002-2v-6a2 0 00-2-2H6a2 0 00-2 2v6a2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                 </button>
             </form>
         </div>
@@ -321,12 +332,30 @@
                 ul.className = `text-gray-400 text-sm mb-8 space-y-3 ${ul.getAttribute(`data-${lang}-list-align`)}`;
                 ul.querySelectorAll('li').forEach(li => {
                     const textNode = li.lastChild;
-                    textNode.textContent = ' ' + li.getAttribute(`data-${lang}`);
+                    // Check if it's actually a text node before trying to set textContent
+                    if (textNode.nodeType === 3) { // Node.TEXT_NODE
+                        textNode.textContent = ' ' + li.getAttribute(`data-${lang}`);
+                    } else if (textNode.nodeType === 1) { // Node.ELEMENT_NODE (if the icon is the last child)
+                        // This case is handled in reorder icon logic below, let's update text node which is the second-to-last child (the text)
+                         const textContent = li.getAttribute(`data-${lang}`);
+                         // Find the actual text node next to the SVG
+                         let textElement = Array.from(li.childNodes).find(node => node.nodeType === 3 && node.textContent.trim().length > 0);
+                         if (!textElement) {
+                            textElement = document.createTextNode(' ' + textContent);
+                            li.appendChild(textElement);
+                         } else {
+                            textElement.textContent = ' ' + textContent;
+                         }
+                    }
+                    
                     // Reorder icon for RTL
-                    if (lang === 'ar') {
-                         li.prepend(li.querySelector('svg'));
-                    } else {
-                         li.appendChild(li.querySelector('svg'));
+                    const svgIcon = li.querySelector('svg');
+                    if (svgIcon) {
+                        if (lang === 'ar') {
+                            li.prepend(svgIcon);
+                        } else {
+                            li.appendChild(svgIcon);
+                        }
                     }
                 });
             });
@@ -369,11 +398,7 @@
             setLanguage(newLang);
         });
 
-        // Initialize with default language (English) then immediately switch to Arabic for Arabic users (since original was AR)
-        // If you want to default to Arabic, change 'en' to 'ar' here:
-        setLanguage('en'); 
-        
-        // Let's set the initial state to Arabic to match the original request
+        // Initialize with Arabic language (based on previous request)
         setLanguage('ar');
 
         // --- Original Functions (Modified for dual language) ---
@@ -387,6 +412,8 @@
             submitMessage.classList.add('hidden');
             formInputs.style.display = 'block';
             submitButton.style.display = 'flex';
+            // Reset form fields
+            form.reset();
         }
 
         function closeModal() {
@@ -411,6 +438,7 @@
             submitButton.innerHTML = `<svg class="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> <span>${currentLang === 'ar' ? 'جاري المعالجة...' : 'Processing...'}</span>`;
             
             try {
+                // Formspree URL is included in the user's code: 'https://formspree.io/f/mvgjrdgn'
                 const response = await fetch('https://formspree.io/f/mvgjrdgn', {
                     method: 'POST',
                     body: formData,
@@ -419,7 +447,7 @@
 
                 if (response.ok) {
                     let paymentUrl = '';
-                    if (selectedPlanInput.value.includes('Monthly') || selectedPlanInput.value.includes('شهري')) paymentUrl = paypalUrl_monthly;
+                    if (selectedPlanInput.value.includes('Monthly') || selectedPlanInput.value.includes('شهرية')) paymentUrl = paypalUrl_monthly;
                     else if (selectedPlanInput.value.includes('6 Months') || selectedPlanInput.value.includes('6 شهور')) paymentUrl = paypalUrl_6months;
                     else if (selectedPlanInput.value.includes('Yearly') || selectedPlanInput.value.includes('سنوي')) paymentUrl = paypalUrl_yearly;
 
@@ -432,12 +460,20 @@
                     }, 4000);
 
                 } else {
-                    throw new Error('Failed');
+                    // Check for a non-200 but successful-looking Formspree response that might contain errors
+                    const data = await response.json();
+                    if (data.errors) {
+                         // Formspree failed validation (e.g., failed CAPTCHA or _gotcha field detected)
+                         throw new Error(data.errors[0].message);
+                    } else {
+                         throw new Error('Formspree submission failed.');
+                    }
                 }
             } catch (error) {
+                console.error("Submission Error:", error);
                 submitButton.disabled = false;
-                submitButton.innerHTML = `<span>${currentLang === 'ar' ? 'حاول مرة أخرى' : 'Try Again'}</span>`;
-                alert(currentLang === 'ar' ? 'حدث خطأ في الاتصال، يرجى المحاولة مجدداً.' : 'Connection error occurred, please try again.');
+                submitButton.innerHTML = `<span>${currentLang === 'ar' ? 'حاول مرة أخرى' : 'Try Again'}</span> <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 0 002-2v-6a2 0 00-2-2H6a2 0 00-2 2v6a2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>`;
+                alert(currentLang === 'ar' ? 'حدث خطأ في إرسال الطلب، يرجى المحاولة مجدداً.' : 'Error sending the request, please try again.');
             }
         }
 
